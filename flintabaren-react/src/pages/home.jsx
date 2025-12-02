@@ -1,23 +1,9 @@
-    const Home = () => {
+import Header from '../components/Header.jsx';
+
+const Home = () => {
   return (
     <div>
-      <header className="site-header">
-        <div className="container header-inner">
-          <a href="#" className="logo" aria-label="Flintabaren startsida">FLINTABAREN</a>
-          <div id="nav-toggle" className="hamburger" role="button" aria-label="Öppna meny" tabIndex="0">
-            <span></span><span></span><span></span>
-          </div>
-          <nav id="site-nav" className="main-nav" aria-label="Huvudmeny">
-            <ul>
-              <li><a href="meny.html">meny</a></li>
-              <li><a href="oppettider.html">öppettider</a></li>
-              <li><a href="hitta.html">hitta hit</a></li>
-              <li><a href="om-oss.html">om oss</a></li>
-            </ul>
-          </nav>
-          <a href="bestall.html" className="btn btn-primary">beställ online</a>
-        </div>
-      </header>
+      <Header />
 
       <main>
         <section className="hero" aria-label="Introduktion">
