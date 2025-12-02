@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="logo" aria-label="Startsida">FLINTABAREN</Link>
         
-        <div id="nav-toggle" className="hamburger" role="button" aria-label="Öppna meny" tabIndex="0">
+        <div id="nav-toggle" className="hamburger" role="button" aria-label="Öppna meny" tabIndex="0" onClick={toggleMenu}>
             <span></span><span></span><span></span>
         </div>
         
-        <nav id="site-nav" className="main-nav" aria-label="Huvudmeny">
+        <nav id="site-nav" className={`main-nav ${isOpen ? 'open' : ''}`} aria-label="Huvudmeny">
             <ul>
                 <li><Link to="/meny">meny</Link></li>
                 <li><Link to="/oppettider">öppettider</Link></li>

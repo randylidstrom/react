@@ -1459,6 +1459,13 @@ label {
   }
 }
 
+/* Alltid visa mobilmeny */
+@media (max-width: 760px) {
+  .site-header .main-nav.open {
+    display: block !important;
+  }
+}
+
 /* ----------------------------------------------------------
    Desktop (minst 761px) - Visa navigation alltid
    ---------------------------------------------------------- */

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
+import CartButton from '../components/CartButton.jsx';
 
 const Home = () => {
   return (
@@ -24,9 +25,7 @@ const Home = () => {
       </main>
 
       {/* Mobile floating cart button */}
-      <Link to="/bestall" className="cart-fab" aria-label="Beställ online" title="Beställ online">
-        <img src="/Media/shopping-cart.svg" alt="" aria-hidden="true" />
-      </Link>
+      <CartButton />
     </div>
   );
 };

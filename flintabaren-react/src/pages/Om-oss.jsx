@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import CartButton from '../components/CartButton';
 
 const OmOss = () => {
   return (
@@ -43,9 +44,7 @@ const OmOss = () => {
       </main>
 
       {/* Cart button */}
-      <a href="/bestall" className="cart-fab" aria-label="Beställ online" title="Beställ online">
-        <img src="/Media/shopping-cart.svg" alt="" aria-hidden="true" />
-      </a>
+      <CartButton />
     </div>
   );
 };
