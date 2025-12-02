@@ -1,0 +1,1535 @@
+/* ==========================================================
+   1. VARIABLER
+   ========================================================== */
+:root {
+  --font-display: 'Antonio', sans-serif;
+  --font-content: 'ABeeZee', sans-serif;
+  --font-bestall: 'Afacad', sans-serif;
+  --color-bg: #FDFDFD;
+  --color-text: #1a1a1a;
+  --color-accent: #842200;
+  --color-cta-bg: #000000;
+  --color-cta-text: #ffffff;
+  --color-border: #e7e3df;
+  --color-input-border: #d8d3cf;
+  --header-height: 80px;
+}
+
+/* ==========================================================
+   2. RESET & BAS
+   ========================================================== */
+* { 
+  box-sizing: border-box; 
+}
+
+html { 
+  font-size: 16px; 
+  scroll-behavior: smooth; 
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--color-text);
+  background: var(--color-bg);
+  letter-spacing: 0.5px;
+}
+
+html, body { 
+  overflow-x: hidden; 
+}
+
+/* Endast startsidan (index) är icke-scrollbar */
+body.landing { 
+  overflow: hidden; 
+}
+
+/* ==========================================================
+   3. TYPOGRAFI & GLOBALA KLASSER
+   ========================================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* CTA-knappar */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: 28px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: background .25s, transform .25s;
+}
+
+.btn-primary { 
+  background: var(--color-cta-bg); 
+  color: var(--color-cta-text); 
+}
+
+.btn-primary:hover { 
+  background: var(--color-accent); 
+  transform: translateY(-2px); 
+}
+
+.btn-primary:active { 
+  transform: translateY(0); 
+}
+
+.btn-call { 
+  background: transparent; 
+  color: var(--color-cta-bg); 
+  border-color: var(--color-cta-bg); 
+}
+
+.btn-call:hover { 
+  background: var(--color-accent); 
+  color: var(--color-cta-text); 
+  border-color: var(--color-accent); 
+}
+
+/* Flytande varukorg-knapp (visas på mobil) */
+.cart-fab { 
+  display: none; 
+}
+
+.cart-fab img { 
+  width: 32px; 
+  height: 32px; 
+  display: block; 
+}
+
+/* ==========================================================
+   4. HEADER & NAVIGATION
+   ========================================================== */
+.site-header {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-bg);
+  z-index: 100;
+  border-bottom: 0;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.site-header .nav-toggle { 
+  position: absolute; 
+  opacity: 0; 
+  pointer-events: none; 
+}
+
+.site-header .container {
+  max-width: 1600px;
+  padding: 0 20px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--header-height);
+  gap: 36px;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-accent);
+  letter-spacing: 1px;
+}
+
+.main-nav { 
+  margin-left: auto; 
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 37px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: lowercase;
+  transition: color .2s;
+}
+
+.main-nav a:hover,
+.main-nav a:focus { 
+  color: var(--color-accent); 
+}
+
+/* ==========================================================
+   5. GEMENSAMMA SIDINNEHÅLL
+   ========================================================== */
+.page-main { 
+  padding: 32px 0 80px; 
+}
+
+.page-main h1 { 
+  margin: 0 0 16px; 
+  font-size: 2.2rem; 
+}
+
+.page-main h2 { 
+  margin-top: 24px; 
+}
+
+/* Tabeller */
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 16px; 
+}
+
+th, td { 
+  border-bottom: 1px solid var(--color-border); 
+  text-align: left; 
+  padding: 10px 8px; 
+}
+
+thead th { 
+  background: #faf7f4; 
+}
+
+/* Formulär */
+form { 
+  display: grid; 
+  gap: 12px; 
+  max-width: 520px; 
+}
+
+input, textarea { 
+  padding: 10px 12px; 
+  border: 1px solid var(--color-input-border); 
+  border-radius: 6px; 
+  font: inherit; 
+}
+
+label { 
+  font-size: .95rem; 
+}
+
+/* "Tillbaka till toppen"-knapp */
+#btn-top {
+  display: none; 
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99; 
+  border: none;
+  outline: none;
+  background-color: var(--color-accent);
+  color: var(--color-cta-text);
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%; 
+  font-size: 24px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+  transition: background-color 0.3s;
+}
+
+#btn-top:hover {
+  background-color: #333; 
+}
+
+/* ==========================================================
+   6. SIDSPECIFIKT
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   STARTSIDA (INDEX) - Hero video
+   ---------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 120px;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.hero-fallback { 
+  display: none; 
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.35) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pause-btn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.pause-btn.video-paused {
+  gap: 0; 
+}
+
+.pause-btn.video-paused::after {
+  content: "";
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 25px solid var(--color-bg);
+  margin-left: 5px;
+}
+
+.pause-btn.video-paused span {
+  display: none;
+}
+
+.pause-btn span {
+  width: 10px;
+  height: 32px;
+  border: 2px solid var(--color-cta-text);
+  display: inline-block;
+}
+
+/* ----------------------------------------------------------
+   MENY-SIDA
+   ---------------------------------------------------------- */
+body.menu-page {
+  background: url('Media/image 7.png') center/cover fixed no-repeat;
+}
+
+.menu-wrapper { 
+  padding: 60px 0 120px; 
+  display: flex; 
+  justify-content: center; 
+}
+
+.menu-card {
+  width: 100%;
+  max-width: 950px;
+  background: var(--color-bg);
+  padding: 56px 52px 72px;
+  box-shadow: 0 4px 4px 3px rgba(0,0,0,.15);
+  font-family: var(--font-content);
+}
+
+.menu-card h1, 
+.menu-card h2, 
+.menu-card h3 { 
+  font-weight: 400; 
+}
+
+.menu-title { 
+  text-align: center; 
+  letter-spacing: 4px; 
+  margin: 0 0 36px; 
+  font-size: 2.5rem; 
+  color: rgba(0,0,0,0); 
+  -webkit-text-stroke: 1.5px var(--color-accent); 
+}
+
+.menu-categories ul { 
+  list-style: none; 
+  display: flex; 
+  justify-content: center; 
+  gap: 64px; 
+  padding: 0; 
+  margin: 0 0 54px; 
+}
+
+.menu-categories a { 
+  text-decoration: none; 
+  font-size: 1.25rem; 
+  letter-spacing: 4px; 
+  color: var(--color-text); 
+}
+
+.menu-categories a:hover, 
+.menu-categories a:focus { 
+  color: var(--color-accent); 
+}
+
+.menu-section { 
+  text-align: center; 
+  margin-bottom: 70px; 
+}
+
+.menu-section-title { 
+  font-size: 2.188rem; 
+  margin: 0 0 38px; 
+  font-weight: 400; 
+  letter-spacing: 4px; 
+  color: rgba(0, 0, 0, 0); 
+  -webkit-text-stroke: 1.5px var(--color-accent);
+}
+
+.menu-items { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.menu-item { 
+  margin: 0 0 66px; 
+}
+
+.menu-item:last-child { 
+  margin-bottom: 0; 
+}
+
+.item-name { 
+  margin: 0 0 6px; 
+  font-size: 1.5rem; 
+  font-weight: 400; 
+  letter-spacing: 3px; 
+}
+
+.item-desc { 
+  margin: 0 0 4px; 
+  font-size: 1rem; 
+  font-style: italic; 
+  letter-spacing: .5px; 
+}
+
+.item-price { 
+  margin: 0; 
+  font-size: 1rem; 
+  font-style: italic; 
+  letter-spacing: .5px; 
+}
+
+.menu-separator { 
+  width: 40px; 
+  height: 3px; 
+  background: var(--color-accent); 
+  margin: 18px auto 0; 
+}
+
+.coming-soon { 
+  font-size: .75rem; 
+  margin: 0; 
+  letter-spacing: .5px; 
+}
+
+/* ----------------------------------------------------------
+   BESTÄLL ONLINE-SIDA
+   ---------------------------------------------------------- */
+body.order-page { 
+  background: url('Media/pizzahero.png') center/cover fixed no-repeat; 
+}
+
+.order-wrapper { 
+  padding: 200px 0 120px; 
+}
+
+.order-card { 
+  width: 100%; 
+  max-width: none; 
+  background: var(--color-bg); 
+  padding: 0 0 72px; 
+  box-shadow: none; 
+  font-family: var(--font-bestall); 
+  border-radius: 0; 
+}
+
+.order-hero {
+  display: none;
+}
+
+/* Övre fältet */
+.order-bar { 
+  padding: 26px 0 10px; 
+  border-bottom: 1px solid #e5e1dd; 
+}
+
+.order-bar-inner { 
+  width: 1114px; 
+  margin: 0 auto; 
+  display: flex; 
+  align-items: flex-start; 
+  justify-content: space-between; 
+  gap: 32px; 
+}
+
+.order-bar-left { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 12px; 
+}
+
+.order-address { 
+  margin: 0; 
+  font-size: 1.2rem; 
+  line-height: 1; 
+  letter-spacing: 1px; 
+  font-family: var(--font-bestall); 
+}
+
+.order-categories ul { 
+  list-style: none; 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 50px; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.order-categories a { 
+  text-decoration: none; 
+  font-size: 1rem; 
+  letter-spacing: 1px; 
+  color: var(--color-text); 
+  font-family: var(--font-bestall); 
+}
+
+.order-categories a:hover, 
+.order-categories a:focus { 
+  color: var(--color-accent); 
+}
+
+.order-search { 
+  display: flex; 
+  align-items: flex-start; 
+  margin-top: 20px; 
+}
+
+.order-search input { 
+  width: 200px; 
+  font-size: .8rem; 
+  letter-spacing: .5px; 
+  border: 1px solid var(--color-input-border); 
+  border-radius: 999px; 
+  padding: 6px 14px; 
+  background: var(--color-cta-text); 
+  transition: box-shadow .18s ease, border-color .18s ease, background-color .18s ease, all 0.3s ease; 
+}
+
+.order-search input:hover { 
+  box-shadow: 0 0 0 2px rgba(0,0,0,.08); 
+  border-color: #cfcac6; 
+}
+
+.order-search input:focus { 
+  outline: 2px solid var(--color-accent); 
+  outline-offset: 2px; 
+  box-shadow: 0 0 0 2px rgba(132,34,0,.25); 
+}
+
+.search-active {
+  background-color: #fff8f5 !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 8px rgba(132, 34, 0, 0.3);
+  width: 240px !important;
+}
+
+/* Sektioner */
+.order-section { 
+  padding: 30px 0 0; 
+  width: 1114px; 
+  margin: 0 auto; 
+}
+
+.order-section-title { 
+  margin: 0 0 12px; 
+  font-size: 1.5rem; 
+  font-weight: 400; 
+  letter-spacing: 2px; 
+  font-family: var(--font-bestall); 
+}
+
+.order-items { 
+  display: grid; 
+  grid-template-columns: repeat(2, 544px); 
+  gap: 31px 26px; 
+  justify-content: flex-start; 
+}
+
+/* Produktkort */
+.order-item { 
+  display: flex; 
+  align-items: stretch; 
+  gap: 0; 
+  background: var(--color-bg); 
+  border: none; 
+  border-radius: 15px; 
+  padding: 0; 
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,.15); 
+  width: 544px; 
+  height: 135px; 
+  position: relative; 
+  overflow: hidden; 
+  transition: box-shadow .18s ease; 
+}
+
+.order-item:hover, 
+.order-item:focus-within { 
+  box-shadow: 0 0 4px 5px rgba(0,0,0,0.25); 
+}
+
+.order-item .item-info { 
+  flex: 1; 
+  min-width: 0; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 18px 16px; 
+  padding-right: calc(139px + 16px); 
+  position: relative; 
+}
+
+.order-item .item-info:before { 
+  content: ""; 
+  position: absolute; 
+  inset: 0; 
+  border: 1px solid #ece9e5; 
+  border-radius: 15px 0 0 15px; 
+  pointer-events: none; 
+}
+
+.order-item .item-name { 
+  margin: 0 0 6px; 
+  font-size: 1.2rem; 
+  font-weight: 400; 
+  letter-spacing: 1.5px; 
+  font-family: var(--font-bestall); 
+}
+
+.order-item .item-desc { 
+  margin: 0 0 10px; 
+  font-size: .8rem; 
+  letter-spacing: .5px; 
+  font-style: italic; 
+}
+
+.order-item .item-price { 
+  margin-top: auto; 
+  margin-bottom: 0; 
+  font-size: 1rem; 
+  letter-spacing: .5px; 
+  font-style: italic; 
+  font-weight: 500; 
+  font-family: var(--font-content); 
+}
+
+.order-item .item-media { 
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  width: 139px; 
+  height: 100%; 
+  margin: 0; 
+  display: block; 
+}
+
+.order-item .item-media img { 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 0 15px 15px 0; 
+  box-shadow: none; 
+}
+
+.order-placeholder { 
+  margin: 0 52px 0; 
+  font-size: .7rem; 
+  letter-spacing: .5px; 
+  font-style: italic; 
+}
+
+/* ----------------------------------------------------------
+   ÖPPETTIDER-SIDA
+   ---------------------------------------------------------- */
+body.hours-page {
+  background: url("Media/image 9.png") center/cover fixed no-repeat;
+}
+
+.hours-wrapper { 
+  display: flex; 
+  justify-content: center; 
+  padding: 56px 24px 120px; 
+}
+
+.hours-card {
+  width: 100%; 
+  max-width: 980px; 
+  background: var(--color-bg); 
+  padding: 56px 60px 72px;
+  box-shadow: 0 4px 4px 3px rgba(0,0,0,.15); 
+  font-family: var(--font-content);
+}
+
+.hours-title { 
+  text-align: center; 
+  margin: 0 0 38px; 
+  letter-spacing: 4px; 
+  font-size: 2.5rem; 
+  color: rgba(0, 0, 0, 0); 
+  -webkit-text-stroke: 0.05rem var(--color-accent); 
+}
+
+.hours-intro { 
+  margin: 0 0 28px; 
+  font-size: 1.1rem; 
+  text-align: center; 
+  letter-spacing: .5px; 
+}
+
+.hours-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  font-size: 1rem; 
+}
+
+.hours-table thead th { 
+  background: var(--color-bg); 
+  font-weight: 500; 
+  letter-spacing: 1px; 
+}
+
+.hours-table th, 
+.hours-table td { 
+  padding: 12px 28px; 
+  border-bottom: 1px solid var(--color-border); 
+  text-align: left; 
+}
+
+.hours-table tbody tr:last-child th, 
+.hours-table tbody tr:last-child td { 
+  border-bottom: 0; 
+}
+
+.hours-table th[scope=row] { 
+  font-weight: 400; 
+  width: 40%; 
+}
+
+.hours-cta { 
+  display: flex; 
+  justify-content: center; 
+  margin: 24px 0 24px; 
+}
+
+.hours-note { 
+  margin: 30px 0 0; 
+  font-size: .7rem; 
+  letter-spacing: .5px; 
+  text-align: center; 
+  font-style: italic; 
+}
+
+/* Dynamisk öppet/stängt-indikator (JavaScript) */
+.open-status {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 1.5em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.status-open {
+  color: #2e7d32;
+}
+
+.status-closed {
+  color: #c62828;
+}
+
+/* ----------------------------------------------------------
+   HITTA HIT-SIDA
+   ---------------------------------------------------------- */
+body.hitta-page { 
+  background: url('Media/image 10.png') lightgray 50% center/cover fixed no-repeat; 
+}
+
+.hitta-wrapper { 
+  display: flex; 
+  justify-content: center; 
+  padding: 56px 24px 120px; 
+}
+
+.hitta-card { 
+  width: 100%; 
+  max-width: 980px; 
+  background: var(--color-bg); 
+  padding: 56px 60px 72px; 
+  box-shadow: 0 4px 40px -8px rgba(0,0,0,.15); 
+  font-family: var(--font-content); 
+}
+
+.hitta-title { 
+  text-align: center; 
+  margin: 0 0 32px; 
+  letter-spacing: 4px; 
+  font-size: 2.5rem; 
+  color: rgba(0,0,0,0); 
+  -webkit-text-stroke: 0.05rem var(--color-accent); 
+}
+
+.hitta-address { 
+  text-align: center; 
+  margin: 0 0 24px; 
+  font-size: 1.05rem; 
+}
+
+.hitta-address a { 
+  color: var(--color-cta-bg); 
+  text-decoration: underline; 
+  letter-spacing: 2px; 
+}
+
+.hitta-address a:hover { 
+  color: var(--color-accent); 
+}
+
+.hitta-tagline { 
+  text-align: center; 
+  margin: 0 0 36px; 
+  font-size: 1rem; 
+  letter-spacing: 2px; 
+}
+
+.hitta-map { 
+  margin: 0 auto; 
+  max-width: 720px; 
+}
+
+.hitta-map img, 
+.hitta-map-frame { 
+  display: block; 
+  width: 100%; 
+  aspect-ratio: 4 / 3; 
+  border: 0; 
+  border-radius: 18px; 
+  box-shadow: 0 4px 16px rgba(0,0,0,.25); 
+  background: var(--color-bg); 
+}
+
+/* Kontaktformulär */
+.contact-section { 
+  max-width: 720px; 
+  margin: 56px auto 0; 
+  font-family: var(--font-content); 
+}
+
+.contact-section h2 { 
+  margin: 0 0 12px; 
+  font-size: 1.4rem; 
+  letter-spacing: 2px; 
+  font-weight: 500; 
+}
+
+.contact-section .contact-intro { 
+  margin: 0 0 24px; 
+  font-size: .85rem; 
+  letter-spacing: .6px; 
+  line-height: 1.5; 
+}
+
+.contact-section form { 
+  display: grid; 
+  gap: 20px; 
+  max-width: 100%; 
+}
+
+.contact-section form > div { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+}
+
+.contact-section label { 
+  font-size: .7rem; 
+  letter-spacing: 2px; 
+  text-transform: uppercase; 
+  font-weight: 600; 
+  color: var(--color-text); 
+}
+
+.contact-section input, 
+.contact-section textarea { 
+  width: 100%; 
+  font-family: var(--font-content); 
+}
+
+.contact-section textarea { 
+  resize: vertical; 
+}
+
+.contact-section .btn { 
+  align-self: flex-start; 
+  padding: .7rem 1.6rem; 
+  font-size: .75rem; 
+  letter-spacing: 1px; 
+}
+
+/* ----------------------------------------------------------
+   OM OSS-SIDA
+   ---------------------------------------------------------- */
+body.about-page { 
+  background: url('Media/image 11.png') center/cover fixed no-repeat; 
+}
+
+.about-wrapper { 
+  position: relative; 
+  display: flex; 
+  justify-content: flex-start; 
+  padding: 56px 24px 120px; 
+  margin-left: 57px; 
+  margin-right: auto; 
+  max-width: none; 
+}
+
+.about-card { 
+  width: 100%; 
+  max-width: 980px; 
+  background: var(--color-bg); 
+  padding: 56px 60px 72px; 
+  box-shadow: 0 4px 40px -8px rgba(0,0,0,.15); 
+  font-family: var(--font-content); 
+}
+
+.about-hero { 
+  width: 100%; 
+  background: #eef1f4; 
+  border: 3px solid #545f71; 
+  aspect-ratio: 393 / 280; 
+  border-radius: 4px; 
+  position: relative; 
+  margin: 0 0 20px; 
+  display: flex; 
+  align-items: center; 
+}
+
+.about-hero-text { 
+  margin: 0; 
+  padding: 16px; 
+  font-family: var(--font-display); 
+  font-size: 1.6rem; 
+  line-height: 1.2; 
+  color: var(--color-cta-bg); 
+}
+
+.about-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 16px; 
+  margin: 0 0 28px; 
+}
+
+.about-title { 
+  font-family: var(--font-display); 
+  font-size: 40px; 
+  line-height: 1; 
+  margin: 0; 
+  color: var(--color-cta-bg); 
+  letter-spacing: 2px; 
+  font-weight: 500; 
+}
+
+.about-icon { 
+  height: 40px; 
+  width: auto; 
+  display: block; 
+}
+
+.about-body { 
+  display: grid; 
+  grid-template-columns: 2fr 1fr; 
+  gap: 32px; 
+}
+
+.about-text p { 
+  font-size: .95rem; 
+  line-height: 1.6; 
+  letter-spacing: .4px; 
+  margin: 0 0 18px; 
+}
+
+.about-carvings { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center; 
+  gap: 26px; 
+}
+
+.about-carvings img { 
+  width: 225px; 
+  max-width: 100%; 
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); 
+}
+
+/* ==========================================================
+   7. MEDIA QUERIES
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Tablet och mindre (840px)
+   ---------------------------------------------------------- */
+@media (max-width: 840px) {
+  /* Globalt: Header */
+  .header-inner { 
+    flex-wrap: wrap; 
+    gap: 16px; 
+    height: auto; 
+    padding: 16px 0; 
+  }
+  
+  .main-nav ul { 
+    flex-wrap: wrap; 
+    gap: 20px; 
+  }
+  
+  .btn { 
+    order: 3; 
+    width: 100%; 
+  }
+  
+  .logo { 
+    flex: 1 1 100%; 
+  }
+  
+  /* Startsida: Hero */
+  .hero { 
+    min-height: 60vh; 
+    padding-bottom: 80px; 
+  }
+  
+  /* Meny-sida */
+  .menu-card { 
+    padding: 40px 28px 56px; 
+  }
+  
+  .menu-categories ul { 
+    flex-wrap: wrap; 
+    gap: 32px; 
+    margin-bottom: 40px; 
+  }
+  
+  .menu-item { 
+    margin-bottom: 38px; 
+  }
+  
+  /* Öppettider-sida */
+  .hours-card { 
+    padding: 40px 34px 56px; 
+  }
+  
+  .hours-title { 
+    font-size: 1.8rem; 
+    margin-bottom: 32px; 
+  }
+  
+  .hours-intro { 
+    margin-bottom: 24px; 
+  }
+  
+  .hours-table th, 
+  .hours-table td { 
+    padding: 10px 68px; 
+  }
+  
+  /* Hitta Hit-sida */
+  .hitta-card { 
+    padding: 40px 34px 56px; 
+  }
+  
+  .hitta-title { 
+    font-size: 1.9rem; 
+    margin-bottom: 32px; 
+  }
+  
+  .hitta-address { 
+    margin-bottom: 22px; 
+  }
+  
+  .hitta-tagline { 
+    margin-bottom: 30px; 
+  }
+  
+  .hitta-map img, 
+  .hitta-map-frame { 
+    aspect-ratio: 3 / 2; 
+    border-radius: 14px; 
+  }
+  
+  /* Om Oss-sida */
+  .about-wrapper { 
+    margin-left: 24px; 
+    padding: 40px 24px 70px; 
+  }
+  
+  .about-card { 
+    padding: 40px 34px 56px; 
+  }
+  
+  .about-icon { 
+    height: 32px; 
+  }
+  
+  .about-body { 
+    grid-template-columns: 1fr; 
+    gap: 22px; 
+  }
+  
+  .about-text p { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+  }
+  
+  .about-carvings { 
+    display: none; 
+  }
+  
+  .about-title { 
+    font-size: 1.9rem; 
+  }
+  
+  .about-runes { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 16px; 
+  }
+  
+  .about-runes img { 
+    max-width: 140px; 
+  }
+}
+
+/* ----------------------------------------------------------
+   Tablet (960px) - Beställ Online-specifikt
+   ---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .order-bar { 
+    padding: 22px 0 10px; 
+  }
+  
+  .order-bar-inner { 
+    width: 100%; 
+    max-width: 860px; 
+    padding: 0 32px; 
+    flex-direction: column; 
+    align-items: stretch; 
+    gap: 18px; 
+  }
+  
+  .order-bar-left { 
+    gap: 10px; 
+  }
+  
+  .order-categories ul { 
+    gap: 28px; 
+  }
+  
+  .order-section { 
+    padding: 34px 32px 0; 
+    width: 100%; 
+    max-width: 860px; 
+  }
+  
+  .order-items { 
+    grid-template-columns: repeat(2, minmax(320px, 1fr)); 
+    justify-content: center; 
+  }
+}
+
+/* ----------------------------------------------------------
+   Mobil (760px)
+   ---------------------------------------------------------- */
+@media (max-width: 760px) {
+  /* Startsida: Dölj video, visa stillbild */
+  body.landing .hero-video { 
+    display: none; 
+  }
+  
+  body.landing .hero-fallback { 
+    display: block; 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 0; 
+  }
+  
+  body.landing .hero-overlay { 
+    display: none; 
+  }
+  
+  body.landing .pause-btn { 
+    display: none; 
+  }
+  
+  body.landing .hero { 
+    padding-bottom: 0; 
+    min-height: calc(100dvh - var(--header-height)); 
+  }
+  
+  /* Globalt: Mobilmeny */
+  .site-header .main-nav { 
+    z-index: 200; 
+    display: none; 
+    position: absolute; 
+    top: calc(var(--header-height)); 
+    right: 16px; 
+    left: 16px; 
+    background: var(--color-cta-text); 
+    border: 1px solid #e5e1dd; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 24px rgba(0,0,0,.15); 
+    padding: 12px; 
+  }
+  
+  .site-header .main-nav ul { 
+    flex-direction: column; 
+    gap: 10px; 
+  }
+  
+  .site-header .hamburger {
+    display: inline-flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    gap: 5px;
+    width: 36px; 
+    height: 36px; 
+    margin-left: auto; 
+    cursor: pointer;
+    border-radius: 8px; 
+    border: none; 
+    background: transparent; 
+    align-items: center;
+    z-index: 201;
+  }
+  
+  .site-header .hamburger span { 
+    display: block; 
+    width: 20px; 
+    height: 2px; 
+    background: var(--color-text); 
+  }
+  
+  .header-inner { 
+    position: relative; 
+    gap: 12px; 
+    flex-wrap: nowrap; 
+    justify-content: flex-start; 
+    height: var(--header-height); 
+    padding: 0; 
+  }
+  
+  .logo { 
+    display: flex; 
+    align-items: center; 
+    order: 0; 
+  }
+  
+  .site-header .btn.btn-primary { 
+    display: none; 
+  }
+  
+  /* Beställ Online-sida: Mobilanpassning */
+  body.order-page { 
+    background: none; 
+  }
+  
+  .order-wrapper { 
+    padding: 0 0 72px; 
+  }
+  
+  .order-hero { 
+    display: block; 
+    width: 100%; 
+    height: 220px; 
+    background: url('Media/pizzahero.png') center/cover no-repeat; 
+  }
+  
+  .order-card { 
+    margin-top: 0; 
+  }
+  
+  .order-bar-inner { 
+    padding: 0 20px; 
+    overflow: hidden; 
+  }
+  
+  .order-categories { 
+    overflow-x: auto; 
+    width: 100%; 
+    -webkit-overflow-scrolling: touch; 
+    overscroll-behavior-x: contain; 
+  }
+  
+  .order-categories::-webkit-scrollbar { 
+    height: 6px; 
+  }
+  
+  .order-categories::-webkit-scrollbar-track { 
+    background: transparent; 
+  }
+  
+  .order-categories::-webkit-scrollbar-thumb { 
+    background: #d0ccc8; 
+    border-radius: 3px; 
+  }
+  
+  .order-categories ul { 
+    flex-wrap: nowrap; 
+    gap: 28px; 
+    padding-bottom: 6px; 
+    min-width: max-content; 
+  }
+  
+  .order-categories a { 
+    font-size: 1.56rem; 
+  }
+  
+  .order-categories a:focus,
+  .order-categories a:active { 
+    color: var(--color-text); 
+    outline: none; 
+  }
+  
+  .order-address { 
+    display: none; 
+  }
+  
+  .order-search input { 
+    width: 100%; 
+  }
+  
+  .order-items { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .order-item { 
+    flex-direction: row; 
+    gap: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 135px; 
+  }
+  
+  .order-item .item-info { 
+    padding: 14px 12px; 
+    padding-right: calc(139px + 12px); 
+  }
+  
+  .order-item .item-media { 
+    width: 139px; 
+  }
+  
+  .order-item .item-media img { 
+    width: 100%; 
+    height: 100%; 
+  }
+  
+  .order-item .item-name { 
+    font-size: 1.1rem; 
+    letter-spacing: 1px; 
+  }
+  
+  .order-item .item-desc { 
+    font-size: .8rem; 
+  }
+  
+  .order-item .item-price { 
+    font-size: 1rem; 
+  }
+  
+  /* Flytande varukorg-knapp synlig på mobil */
+  .cart-fab { 
+    position: fixed; 
+    right: 18px; 
+    bottom: 24px; 
+    width: 64px; 
+    height: 64px; 
+    border-radius: 50%;
+    background: var(--color-accent); 
+    color: var(--color-cta-text); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-decoration: none; 
+    font-size: 28px; 
+    box-shadow: 0 10px 24px rgba(0,0,0,.28); 
+    z-index: 300; 
+  }
+  
+  .cart-fab img { 
+    filter: none; 
+  }
+  
+  /* Hitta Hit och Öppettider: fullskärm på mobil */
+  body.hitta-page { 
+    min-height: 100dvh; 
+    background-attachment: scroll; 
+  }
+  
+  .hitta-wrapper { 
+    min-height: calc(100dvh - var(--header-height)); 
+  }
+  
+  body.hours-page { 
+    min-height: 100dvh; 
+    background-attachment: scroll; 
+  }
+  
+  .hours-wrapper { 
+    min-height: calc(100dvh - var(--header-height)); 
+  }
+  
+  /* Om Oss: Pseudo-hero på mobil */
+  body.about-page { 
+    background: none; 
+  }
+  
+  .about-wrapper { 
+    flex-direction: column; 
+    margin-left: 0; 
+    padding: 0 0 60px; 
+    position: relative; 
+  }
+  
+  .about-wrapper:before { 
+    content: ""; 
+    display: block; 
+    width: 100%; 
+    height: 220px; 
+    background: url('Media/image 11.png') center/cover no-repeat; 
+  }
+  
+  .about-card { 
+    box-shadow: none; 
+    padding: 28px 22px 52px; 
+    max-width: none; 
+    background: var(--color-bg); 
+  }
+  
+  .about-header { 
+    margin-top: 0; 
+  }
+  
+  /* Tillbaka till toppen-knapp */
+  #btn-top {
+    bottom: 100px; 
+    right: 20px;
+    left: auto;
+    transform: none;
+  }
+}
+
+/* ----------------------------------------------------------
+   Desktop (minst 761px) - Visa navigation alltid
+   ---------------------------------------------------------- */
+@media (min-width: 761px) {
+  .site-header .main-nav {
+    display: block !important; 
+  }
+  
+  .site-header .hamburger {
+    display: none !important;
+  }
+}
+
+/* ==========================================================
+   8. SPECIALFUNKTIONER
+   ========================================================== */
+
+/* Utskrift: Visa endast innehåll */
+@media print {
+  .site-header, 
+  .hero, 
+  .scroll-indicator, 
+  .order-bar, 
+  .about-carvings, 
+  .hitta-map, 
+  .order-items { 
+    display: none !important; 
+  }
+  
+  body, 
+  .hours-page, 
+  .menu-page, 
+  .about-page, 
+  .hitta-page, 
+  .order-page { 
+    background: var(--color-cta-text) !important; 
+  }
+  
+  body, 
+  .page-main { 
+    padding: 0; 
+    margin: 0; 
+  }
+  
+  .menu-card, 
+  .hours-card, 
+  .hitta-card, 
+  .about-card, 
+  .order-card { 
+    box-shadow: none !important; 
+    background: var(--color-cta-text) !important; 
+  }
+  
+  .hours-table th, 
+  .hours-table td { 
+    font-size: 12px; 
+    padding: 6px 8px; 
+  }
+  
+  .hours-title { 
+    font-size: 20px; 
+    -webkit-text-stroke: 0; 
+    color: var(--color-cta-bg); 
+  }
+  
+  body::after { 
+    content: "Flintabaren"; 
+    display: block; 
+    margin-top: 24px; 
+    font-size: 10px; 
+    text-align: center; 
+  }
+}
+
+/* Respektera minskad rörelse-preferens */
+@media (prefers-reduced-motion: reduce) {
+  html { 
+    scroll-behavior: auto; 
+  }
+}
