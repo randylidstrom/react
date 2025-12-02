@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 
 const Home = () => {
@@ -23,9 +24,9 @@ const Home = () => {
       </main>
 
       {/* Mobile floating cart button */}
-      <a href="bestall.html" className="cart-fab" aria-label="Beställ online" title="Beställ online">
+      <Link to="/bestall" className="cart-fab" aria-label="Beställ online" title="Beställ online">
         <img src="/Media/shopping-cart.svg" alt="" aria-hidden="true" />
-      </a>
+      </Link>
     </div>
   );
 };

@@ -448,8 +448,9 @@ label {
 /* ----------------------------------------------------------
    BESTÄLL ONLINE-SIDA
    ---------------------------------------------------------- */
-body.order-page { 
-  background: url('Media/pizzahero.png') center/cover fixed no-repeat; 
+.order-page { 
+  background: url('/Media/pizzahero.png') center/cover fixed no-repeat; 
+  min-height: 100vh;
 }
 
 .order-wrapper { 
@@ -674,8 +675,9 @@ body.order-page {
 /* ----------------------------------------------------------
    ÖPPETTIDER-SIDA
    ---------------------------------------------------------- */
-body.hours-page {
-  background: url("Media/image 9.png") center/cover fixed no-repeat;
+.hours-page {
+  background: url("/Media/image 9.png") center/cover fixed no-repeat;
+  min-height: 100vh;
 }
 
 .hours-wrapper { 
@@ -774,8 +776,9 @@ body.hours-page {
 /* ----------------------------------------------------------
    HITTA HIT-SIDA
    ---------------------------------------------------------- */
-body.hitta-page { 
-  background: url('Media/image 10.png') lightgray 50% center/cover fixed no-repeat; 
+.hitta-page { 
+  background: url('/Media/image 10.png') lightgray 50% center/cover fixed no-repeat; 
+  min-height: 100vh;
 }
 
 .hitta-wrapper { 
@@ -902,8 +905,9 @@ body.hitta-page {
 /* ----------------------------------------------------------
    OM OSS-SIDA
    ---------------------------------------------------------- */
-body.about-page { 
-  background: url('Media/image 11.png') center/cover fixed no-repeat; 
+.about-page { 
+  background: url('/Media/image 11.png') center/cover fixed no-repeat; 
+  min-height: 100vh;
 }
 
 .about-wrapper { 
@@ -1174,29 +1178,30 @@ body.about-page {
    ---------------------------------------------------------- */
 @media (max-width: 760px) {
   /* Startsida: Dölj video, visa stillbild */
-  body.landing .hero-video { 
+  .hero-video { 
     display: none; 
   }
   
-  body.landing .hero-fallback { 
+  .hero-fallback { 
     display: block; 
     position: absolute; 
     inset: 0; 
     width: 100%; 
     height: 100%; 
+    min-height: calc(100dvh - var(--header-height));
     object-fit: cover; 
     z-index: 0; 
   }
   
-  body.landing .hero-overlay { 
+  .hero-overlay { 
     display: none; 
   }
   
-  body.landing .pause-btn { 
+  .pause-btn { 
     display: none; 
   }
   
-  body.landing .hero { 
+  .hero { 
     padding-bottom: 0; 
     min-height: calc(100dvh - var(--header-height)); 
   }
