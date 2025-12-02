@@ -327,8 +327,9 @@ label {
 /* ----------------------------------------------------------
    MENY-SIDA
    ---------------------------------------------------------- */
-body.menu-page {
-  background: url('Media/image 7.png') center/cover fixed no-repeat;
+.menu-page {
+  background: url('/Media/image 7.png') center/cover fixed no-repeat;
+  min-height: 100vh;
 }
 
 .menu-wrapper { 
